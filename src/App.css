@@ -1,0 +1,75 @@
+#root {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #2277ae;
+}
+
+#quote-box {
+  width: 50%;
+}
+#quote {
+  padding: 50px 20px;
+  max-width: 90%;
+  background: rgba( 255, 255, 255, 0.5 );
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 6.5px );
+  -webkit-backdrop-filter: blur( 6.5px );
+  border-radius: 10px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+
+#text {
+  text-align: center;
+  color: #262626;
+  font-size: 45px;
+}
+
+#text::after {
+  content: '"';
+}
+
+
+#text::before {
+  content: '"';
+}
+
+#author {
+  width: 100%;
+  display: block;
+  text-align: center;
+  color: #262626;
+  font-size: 20px;
+}
+
+#quote-actions {
+  margin-top: 14px;
+  display: flex;
+  justify-content: center;
+}
+
+#tweet-quote {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  color: white;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+#tweet-quote:hover {
+  border-color: #646cff;
+}
+#tweet-quote:focus,
+#tweet-quote:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+
+
+
