@@ -1,13 +1,12 @@
-import { useEffect, useState } from 'react'
+import { useLayoutEffect, useState } from 'react'
 import axios from 'axios'
 import './App.css'
 
 function App() {
-  const [ list, setList] = useState([])
+  const [ list, setList] = useState()
   const [ random, setRandom ] = useState(0)
 
-  useEffect(() => {
-    handleRandomNumbers()
+  useLayoutEffect(() => {
     handleInitialQuotes()
   },[])
 
@@ -16,42 +15,39 @@ function App() {
     const newList = result.data.map((item) => {
       const [quote, author] = item.split(" - ");
       return { quote: quote.slice(1, -1), author: author };
-      })
+    })
     setList(newList)
+    handleRandomNumbers()
   }
 
-      const handleRandomNumbers = () => {
-        const randomNumber = Math.floor(Math.random() * list.length);
-        setRandom(randomNumber)
-      }
+  const handleRandomNumbers = () => {
 
-      const handleNewQuote = () => {
-        handleRandomNumbers()
-      }
-
-
-      return (
-        <>
-          <main id='quote-box'>
-            <div id='quote'>
-             <p id='text'>
-                { list ? list[random].quote : null }
-              </p>
-              <span id='author'>
-                { list ? list[random].author : null }
-              </span>
-            </div>
-            <div id='quote-actions'>
-              <button id='new-quote' onClick={handleNewQuote}>
-                NEW QUOTE
-              </button>
-              {/*<a id='tweet-quote' target='_blank' href={ list ? `https://twitter.com/intent/tweet/${list[random].quote}` : '/'}>
-          Tweet Quote
-        </a>*/}
-            </div>
-          </main>
-        </>
-      )
+    const randomNumber = Math.floor(Math.random() * list.length);
+    setRandom(randomNumber)
   }
 
-  export default App
+  const handleNewQuote = () => {
+    handleRandomNumbers()
+  }
+
+
+  return (
+      <main id='quote-box'>
+        <div id='quote'>
+          <p id='text'>
+            { list ? list[random].quote : null }
+          </p>
+          <span id='author'>
+            { list ? list[random].author : null }
+          </span>
+        </div>
+        <div id='quote-actions'>
+          <button id='new-quote' onClick={handleNewQuote}>
+            NEW QUOTE
+          </button>
+        </div>
+      </main>
+  )
+}
+
+export default App
