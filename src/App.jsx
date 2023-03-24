@@ -11,7 +11,7 @@ function App() {
   },[])
 
   const handleInitialQuotes = async () => {
-    const result = await axios.get('https://quotes.apps.app.br')
+    const result = await axios.get('https://quotes.apps.app.br', {headers: {'Content-Type': 'application/json', Accept: 'application/json'}})
     const newList = result.data.map((item) => {
       const [quote, author] = item.split(" - ");
       return { quote: quote.slice(1, -1), author: author };
